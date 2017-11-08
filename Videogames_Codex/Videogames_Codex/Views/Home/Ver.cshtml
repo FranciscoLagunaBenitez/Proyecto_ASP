@@ -1,0 +1,44 @@
+﻿@model Videogames_Codex.Models.Videogames
+@{
+    ViewBag.Title = "Ver";
+}
+
+<h2 class="page-header"><a href="~/">Videogames Codex</a></h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">@Model.name
+        <p align="right"><a class="btn btn-xs btn-primary" href="~/Home/modificar/@Model.id">Editar</a></p>
+        <p align="right">
+            <a onclick="return confirm('Pero... ¿Tu estas seguro de querer borrar esta tarea?');" class="btn btn-xs btn-danger" href="~/Home/borrar/@Model.id">Eliminar</a>
+        </p>
+</div>
+    
+        
+        <div class="panel-body">
+            <dl class="dl-vertical">
+                <dt>@Model.name</dt>
+                <dt>Publisher: </dt>
+                <dd>@Model.publisher</dd>
+                <dt>Year: </dt>
+                <dd>@Model.year</dd>
+                <dt>Genre: </dt>
+                <dd>@Model.Genre</dd>
+                <dt>Platform: </dt>
+                <dd>@Model.Platform</dd>
+                <dt>Score: </dt>
+                <dd>@Model.score</dd>
+                <dt>Online?: </dt>
+                @if (Model.online == true)
+            {
+                    <dd>Yes</dd>
+                }
+                else
+                {
+                    <dd>No</dd>
+                }
+                <dt>Pegi: </dt>
+                <dd>@Model.Pegi</dd>
+            </dl>
+        </div>
+</div>
+

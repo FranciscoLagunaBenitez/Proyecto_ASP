@@ -1,0 +1,35 @@
+﻿@model List<Videogames_Codex.Models.Videogames>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class ="page-header"><a href="~/">Videogames Codex</a></h2>
+
+<div class="panel-heading"><h4>Game List</h4></div>
+<a class="btn btn-xs btn-primary" href="~/Home/crear/">Add Videogame</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Publisher</th>
+            <th>Genre</th>
+            <th>More details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Videogames_Codex.Models.Videogames videogame in Model) { 
+            <tr>
+                <td>@videogame.name</td>
+                <td>@videogame.publisher</td>
+                <td>@videogame.Genre</td>
+                <td><a class="btn btn-xs btn-default" href="~/Home/ver/@videogame.id">Show</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-xs btn-default" href="~/Home/ranking">Ranking</a>
+
+
+

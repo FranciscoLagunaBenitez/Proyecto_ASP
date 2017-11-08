@@ -1,0 +1,72 @@
+﻿@model Videogames_Codex.Models.Videogames
+@{
+    ViewBag.Title = Model.id > 0 ? "Modify Videogame" : "New Videogame";
+}
+
+
+<h2 class="page-header"><a href="~/">Videogames Codex</a></h2>
+@(Model.id > 0 ? Model.name : "New Videogame")
+
+
+@using (Html.BeginForm("Guardar", "Home", FormMethod.Post, new { id = "form-videogames" }))
+{
+    @Html.HiddenFor(x => x.id)
+    <div class="panel-heading">Videogame's Info</div>
+    <div class="panel-body">
+        @Html.Label("Game Title: ")
+        @Html.TextBoxFor(x => x.name)
+        @Html.ValidationMessageFor(x => x.name, null, new { @class = "label label-danger" })
+        <br />
+        @Html.Label("Publisher: ")
+        @Html.TextBoxFor(x => x.publisher)
+        @Html.ValidationMessageFor(x => x.publisher, null, new { @class = "label label-danger" })
+        <br />
+        @Html.Label("Year: ")
+        @Html.TextBoxFor(x => x.year)
+        @Html.ValidationMessageFor(x => x.year, null, new { @class = "label label-danger" })
+        <br />
+        @Html.Label("Genre: ")
+        <select name="Genre" class="form-control">
+            <option @(Model.Genre == Genres.Unknow ? "selected" : "") value="0">Unknow</option>
+            <option @(Model.Genre == Genres.Action ? "selected" : "") value="1">Action</option>
+            <option @(Model.Genre == Genres.Adventure ? "selected" : "") value="2">Adventure</option>
+            <option @(Model.Genre == Genres.Strategy ? "selected" : "") value="3">Strategy</option>
+            <option @(Model.Genre == Genres.RPG ? "selected" : "") value="4">RPG</option>
+            <option @(Model.Genre == Genres.Sport ? "selected" : "") value="5">Sport</option>
+        </select>
+        <br />
+        @Html.Label("Platform: ")
+        <select name="Platform" class="form-control">
+            <option @(Model.Platform == Platforms.Unknow ? "selected" : "") value="0">Unknow</option>
+            <option @(Model.Platform == Platforms.PC ? "selected" : "") value="1">PC</option>
+            <option @(Model.Platform == Platforms.PS4 ? "selected" : "") value="2">PS4</option>
+            <option @(Model.Platform == Platforms.XBOXONE ? "selected" : "") value="3">XBOX ONE</option>
+        </select>
+        <br />
+        @Html.Label("Score: ")
+        @Html.TextBoxFor(x => x.score)
+        @Html.ValidationMessageFor(x => x.score, null, new { @class = "label label-danger" })
+        <br />
+        @Html.Label("¿Online?")
+        <br />
+        Yes @Html.RadioButtonFor(x => x.online, true)
+        <br />
+        No @Html.RadioButtonFor(x => x.online, false)
+        <br />
+        @Html.Label("PEGI")
+        <select name="PEGI" class="form-control">
+            <option @(Model.Pegi == Pegi.Unknow ? "selected" : "") value="0">Unknow</option>
+            <option @(Model.Pegi == Pegi.PEGI3 ? "selected" : "") value="1">PEGI 3</option>
+            <option @(Model.Pegi == Pegi.PEGI6 ? "selected" : "") value="2">PEGI 6</option>
+            <option @(Model.Pegi == Pegi.PEGI12 ? "selected" : "") value="3">PEGI 12</option>
+            <option @(Model.Pegi == Pegi.PEGI18 ? "selected" : "") value="4">PEGI 18</option>
+        </select>
+</div>
+
+<div class="text-right">
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</div>
+
+}
+
+
